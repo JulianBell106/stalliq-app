@@ -5,7 +5,7 @@
 > - **Then build in this order (one session each):** B4 generic audit → B17 order cap → B18 delivery mode + area check → B19 trading window / pre-order days → B9 Stripe prepay → Som Ka branch + config + domain/site/email → B12 MI → B13 / B14 / B16 → B6 Play Store TWA.
 > - **Twilio auto-reply (bounce) for inbound SMS + WhatsApp** — still outstanding, console-only, no code. Develop → TwiML Bins → "Notification auto-reply": `<Response><Message>Thanks for your message! This is an automated order-notification line and isn't monitored, so we can't read replies here. To place or change an order, please use the app you ordered from. See you soon!</Message></Response>` → attach to +447782218609 inbound SMS webhook AND WhatsApp sender inbound webhook. Vendor-neutral wording on purpose (shared number).
 > - **WhatsApp sender display name "Stalliq"** — approved by Meta 2026-06-06; Twilio ticket submitted for number re-registration. Check whether it ever completed (Meta WhatsApp Manager → sender should read "Stalliq", not "Endoo Limited").
-> - **Later:** rename GitHub repo `lamulettipizza` → `stalliq-app` (Netlify + local clone need re-pointing; do when `main` is retired). iOS: Add-to-Home-Screen guidance only until a paying vendor asks; App Store needs Xcode (buy a used M1 Mac mini ~£300–400, or rent via MacinCloud). Add Stalliq product page to endoo.co.uk.
+> - ~~Rename GitHub repo `lamulettipizza` → `stalliq-app`~~ ✓ Done 2026-10-14 — repo, local folder (`...\Engineering\Stalliq\stalliq-app`) and GitHub Desktop remote all renamed. **Verify Netlify sites (stalliq-demo, lamuletti) still show the linked repo as `stalliq-app`.** iOS: Add-to-Home-Screen guidance only until a paying vendor asks; App Store needs Xcode (buy a used M1 Mac mini ~£300–400, or rent via MacinCloud). Add Stalliq product page to endoo.co.uk.
 >
 > ⚠️ **Julian — actions outstanding:**
 > 1. **Confirm the Som Ka menu with Som** — 4 fixed dishes (candidates: gai yang, moo tod, gaeng keow wan, larb gai, pad krapao, tod man pla + jasmine/sticky rice). Menu is the natural way to bring her in early; the *app* is the reveal, not the business.
@@ -97,7 +97,7 @@ Julian has ~30 years IT experience and a development background but no longer co
 - Julian tests on real devices and reports findings back
 
 **Session startup prompt:**
-> "New session — ignore the project file attachment, read the live PROJECT.md from GitHub instead: https://raw.githubusercontent.com/JulianBell106/lamulettipizza/refs/heads/develop/PROJECT.md — today we're working on [task]"
+> "New session — ignore the project file attachment, read the live PROJECT.md from GitHub instead: https://raw.githubusercontent.com/JulianBell106/stalliq-app/refs/heads/develop/PROJECT.md — today we're working on [task]"
 
 **⚠️ Raw URL note:** GitHub raw URLs are sometimes served cached. If Claude fetches files and the content looks wrong or outdated, paste the file content directly into chat.
 
@@ -129,7 +129,7 @@ Julian has ~30 years IT experience and a development background but no longer co
 **Commercial arrangement (finalised 2026-06-01):** £149 one-time setup fee. Year 1 free — full Festival tier. Year 2+: £39.50/month (50% off Festival, locked for life as Founding Customer #1). Cancel and rejoin loses the rate permanently. **Pitch meeting: Wednesday 2026-06-04. Daniele confirmed he wants to go ahead — first meeting April 2026.**
 
 **Demo site (live):** https://stalliq-demo.netlify.app/
-**GitHub repo:** https://github.com/JulianBell106/lamulettipizza
+**GitHub repo:** https://github.com/JulianBell106/stalliq-app (renamed from `lamulettipizza` 2026-10-14)
 
 > ⚠️ Demo site has `noindex, nofollow` meta tag — will not appear in search results.
 

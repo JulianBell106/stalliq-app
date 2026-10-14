@@ -11,7 +11,7 @@
 
 - **Never commit directly to `main`.** All work starts on `develop`.
 - **Never merge `firebase.js` across branches.** Each branch holds its own credentials. This is enforced by `.gitattributes` (`merge=ours`), but double-check after every merge.
-- **Deploy workflow:** finish feature on `develop` → test on stalliq-demo → merge to `main` → La Muletti site auto-deploys.
+- **Deploy workflow (from 2026-10-14):** all development on `develop` → test on demo.stalliq.co.uk. `main` is La Muletti's production branch and is **frozen** (they did not onboard) — do not merge into it. Future vendors (e.g. Som Ka) get their own branch off `develop`.
 
 ## Merging develop → main
 
