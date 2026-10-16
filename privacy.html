@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Privacy Policy — Street Stack</title>
+<title>Privacy Policy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -119,11 +119,11 @@
 
   <div class="pp-section">
     <h2>Who we are</h2>
-    <p>Street Stack is a mobile street food vendor based in Milton Keynes. This ordering app is operated on behalf of Street Stack by <strong>Endoo Limited</strong>, a company registered in England and Wales.</p>
+    <p><span class="pp-vendor">the vendor</span> is a food business based in <span class="pp-location">the UK</span>. This ordering app is operated on behalf of <span class="pp-vendor">the vendor</span> by <strong>Endoo Limited</strong>, a company registered in England and Wales.</p>
     <p>
       <strong>Contact:</strong><br>
       Endoo Limited<br>
-      Email: <a href="mailto:hello@streetstack.co.uk">hello@streetstack.co.uk</a><br>
+      Email: <a class="pp-email" href="#"></a><br>
       Phone: <a href="tel:07700900123">07700 900123</a>
     </p>
   </div>
@@ -176,7 +176,7 @@
       <li>Object to or restrict our processing of your data</li>
       <li>Lodge a complaint with the Information Commissioner's Office (ICO)</li>
     </ul>
-    <p>To exercise any of these rights, please contact us at <a href="mailto:hello@streetstack.co.uk">hello@streetstack.co.uk</a>.</p>
+    <p>To exercise any of these rights, please contact us at <a class="pp-email" href="#"></a>.</p>
   </div>
 
   <div class="pp-section">
@@ -192,9 +192,22 @@
 </main>
 
 <footer class="pp-footer">
-  © 2026 Street Stack · Milton Keynes ·
-  <a href="mailto:hello@streetstack.co.uk">hello@streetstack.co.uk</a>
+  © <span class="pp-year"></span> <span class="pp-vendor"></span> · <span class="pp-location"></span> ·
+  <a class="pp-email" href="#"></a>
 </footer>
 
+<!-- Vendor details injected from config.js (B4 audit) — privacy.html is no longer a per-vendor file -->
+<script src="js/config.js"></script>
+<script>
+  (function () {
+    if (typeof CONFIG === 'undefined') return;
+    const b = CONFIG.business || {}, c = CONFIG.contact || {};
+    document.title = 'Privacy Policy — ' + (b.name || '');
+    document.querySelectorAll('.pp-vendor').forEach(el => el.textContent = b.name || '');
+    document.querySelectorAll('.pp-location').forEach(el => el.textContent = b.location || '');
+    document.querySelectorAll('.pp-year').forEach(el => el.textContent = new Date().getFullYear());
+    document.querySelectorAll('.pp-email').forEach(el => { el.textContent = c.email || ''; el.href = 'mailto:' + (c.email || ''); });
+  })();
+</script>
 </body>
 </html>

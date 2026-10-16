@@ -1,5 +1,5 @@
 /**
- * La Muletti Pizza — App JS
+ * Stalliq — Customer App JS (vendor-agnostic; all vendor content from config.js)
  * ============================================================================
  * All customer-specific data comes from CONFIG (js/config.js).
  * Firebase initialised in js/firebase.js — exposes: db, auth
@@ -46,6 +46,21 @@
  * ============================================================================
  */
 
+
+/* ============================================================================
+   0. VENDOR STRINGS HELPER (B4 generic audit, 2026-10-16)
+   S(key, fallback) returns CONFIG.strings[key] if the vendor config defines
+   it, otherwise the fallback (today's Stall-mode wording). Supports {type}
+   and {icon} tokens. Vendor configs without a `strings` block (e.g. main)
+   behave exactly as before. Kitchen-mode vendors (B18) override these.
+   ============================================================================ */
+function S(key, fallback) {
+  const raw = (typeof CONFIG !== 'undefined' && CONFIG.strings && CONFIG.strings[key] != null)
+    ? CONFIG.strings[key] : fallback;
+  return String(raw)
+    .replace(/\{type\}/g, (CONFIG.business && CONFIG.business.type) || 'order')
+    .replace(/\{icon\}/g, (CONFIG.business && CONFIG.business.stampIcon) || '🎉');
+}
 
 /* ============================================================================
    1. THEME INJECTION
@@ -747,6 +762,8 @@ function dPlaceOrder() {
       selectedCollectionWindow = null;
       document.getElementById('d-order-ref').textContent   = 'Order ref ' + orderRef;
       document.getElementById('d-order-details').innerHTML = rows;
+      const dMsgEl = document.getElementById('d-order-msg');
+      if (dMsgEl) dMsgEl.textContent = CONFIG.ordering.confirmMsg;
 
       const timeEl  = document.getElementById('d-order-time');
       const labelEl = document.getElementById('d-order-timelabel');
@@ -1539,7 +1556,7 @@ function buildMapHTML(lat, lng, updatedAt) {
         <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#27AE60"/></svg>
         Live location
       </span>
-      <p class="van-location-tagline">We are operating in this location right now — come and find us!</p>
+      <p class="van-location-tagline">${S('liveLocationTagline', 'We are operating in this location right now — come and find us!')}</p>
       <iframe
         class="van-map-iframe"
         src="${mapSrc}"
@@ -1885,7 +1902,7 @@ function renderCollectionWindowPicker(prefix) {
   }).join('');
 
   el.style.display = 'block';
-  el.innerHTML = '<div class="cw-label">When are you collecting?</div>' +
+  el.innerHTML = '<div class="cw-label">' + S('collectionQuestion', 'When are you collecting?') + '</div>' +
     '<div class="cw-options">' + optsHTML + '</div>';
 }
 
@@ -2019,7 +2036,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // ── Static renders — no network dependency, fire immediately ────────────
   // All CONFIG-only renders run before sheet fetch to prevent flash of
-  // default (La Muletti) text while sheets are loading.
+  // placeholder text while sheets are loading.
   renderMobileHome();
   renderMobileAbout();
   renderDesktopNav();
@@ -2053,7 +2070,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     const last  = parts.pop();
     footerLogo.innerHTML = `${parts.join(' ')} <span>${last}</span>`;
   }
-  const footerCopy = document.querySelector('.d-footer-copy');
+  // Footer copy — written into a span so the privacy-policy link survives (B4 audit)
+  const footerCopy = document.getElementById('d-footer-copy-text') || document.querySelector('.d-footer-copy');
   if (footerCopy) {
     footerCopy.textContent = `© ${CONFIG.business.year} ${CONFIG.business.name} · ${CONFIG.business.location} · ${CONFIG.contact.email}`;
   }
@@ -2185,7 +2203,7 @@ function authGateway(orderFn) {
   const titleEl = document.getElementById('auth-title');
   const subEl   = document.getElementById('auth-sub-text');
   if (titleEl) titleEl.textContent = 'Confirm your order';
-  if (subEl)   subEl.textContent   = "Enter your mobile and we'll text you when your order is ready to collect";
+  if (subEl)   subEl.textContent   = S('authSubtitle', "Enter your mobile and we'll text you when your order is ready to collect");
 
   const user = auth.currentUser;
 
@@ -2597,7 +2615,7 @@ const ORDER_STATUS_CONFIG = {
   },
   ready: {
     icon:   '🟢',
-    label:  'Ready to collect — head to the van!',
+    get label() { return S('readyStatus', 'Ready to collect — head to the van!'); },
     colour: '#7ec87e'
   }
 };
@@ -2712,10 +2730,10 @@ function startOrderStatusListener(orderId) {
         const mLabel = document.getElementById('m-confirm-timelabel');
         const mBtn   = document.querySelector('#m-order-confirm .m-btn');
         if (mIcon)  mIcon.textContent  = '🟢';
-        if (mTitle) mTitle.textContent = 'Ready to collect!';
+        if (mTitle) mTitle.textContent = S('readyTitle', 'Ready to collect!');
         if (mTime)  mTime.textContent  = '';
-        if (mLabel) mLabel.textContent = `Head to the van — your ${CONFIG.business.type} is ready! ${CONFIG.business.stampIcon || '🎉'}`;
-        if (mBtn)   mBtn.textContent   = '✓ Thanks — on my way!';
+        if (mLabel) mLabel.textContent = S('readyMessage', 'Head to the van — your {type} is ready! {icon}');
+        if (mBtn)   mBtn.textContent   = S('readyButton', '✓ Thanks — on my way!');
 
         const dIcon  = document.querySelector('#d-order-overlay .d-order-icon');
         const dTitle = document.querySelector('#d-order-overlay .d-order-title');
@@ -2723,10 +2741,10 @@ function startOrderStatusListener(orderId) {
         const dLabel = document.getElementById('d-order-timelabel');
         const dBtn   = document.querySelector('#d-order-overlay .d-btn-primary');
         if (dIcon)  dIcon.textContent  = '🟢';
-        if (dTitle) dTitle.textContent = 'Ready to collect!';
+        if (dTitle) dTitle.textContent = S('readyTitle', 'Ready to collect!');
         if (dTime)  dTime.textContent  = '';
-        if (dLabel) dLabel.textContent = `Head to the van — your ${CONFIG.business.type} is ready! ${CONFIG.business.stampIcon || '🎉'}`;
-        if (dBtn)   dBtn.textContent   = '✓ Thanks — on my way!';
+        if (dLabel) dLabel.textContent = S('readyMessage', 'Head to the van — your {type} is ready! {icon}');
+        if (dBtn)   dBtn.textContent   = S('readyButton', '✓ Thanks — on my way!');
 
         orderStatusUnsubscribe();
         orderStatusUnsubscribe = null;

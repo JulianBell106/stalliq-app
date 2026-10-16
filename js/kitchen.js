@@ -1,3 +1,11 @@
+// ── Vendor strings helper (B4 generic audit) — mirrors S() in app.js ─────────
+function S(key, fallback) {
+  const raw = (typeof CONFIG !== 'undefined' && CONFIG.strings && CONFIG.strings[key] != null)
+    ? CONFIG.strings[key] : fallback;
+  return String(raw)
+    .replace(/\{noun\}/g, (CONFIG.strings && CONFIG.strings.locationNoun) || 'van');
+}
+
 // ── Dedicated Firebase app for the kitchen ───────────────────────────────────
 // Same project config as the default app, but a separate named instance.
 // This gives the kitchen its own auth + Firestore client — no shared state.
@@ -37,7 +45,7 @@ function esc(str) {
 
 
 /**
- * kitchen.js — La Muletti Pizza Kitchen Dashboard
+ * kitchen.js — Stalliq Kitchen Dashboard (vendor-agnostic; vendor content from config.js)
  * ============================================================================
  * Sections:
  *   1.  State
@@ -692,7 +700,7 @@ async function sendFlashSale() {
     vanLng = locDoc.data().lng;
   } catch (err) {
     console.error('[F19] sendFlashSale: could not read location:', err.message);
-    if (statusEl) statusEl.textContent = 'Could not read van location — try again.';
+    if (statusEl) statusEl.textContent = S('locationReadError', 'Could not read {noun} location — try again.');
     return;
   }
 
@@ -1630,6 +1638,10 @@ function startDashboard() {
 document.addEventListener('DOMContentLoaded', () => {
   applyKitchenTheme();
   initPageIdentity();
+
+  // Vendor-string overrides (B4 generic audit)
+  const fsNote = document.getElementById('fs-broadcast-note');
+  if (fsNote) fsNote.textContent = S('flashSaleBroadcastNote', 'Van must be broadcasting.');
 
   // Restore lockout state from sessionStorage (Session 15)
   const savedFails     = parseInt(sessionStorage.getItem('pinFailCount')  || '0', 10);

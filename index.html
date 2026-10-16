@@ -6,11 +6,11 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="La Muletti">
+<meta name="apple-mobile-web-app-title" content="Stalliq">
 <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/icons/stalliq-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>La Muletti Pizza — Neapolitan Wood-Fired Pizza · Milton Keynes</title>
+<title>Order Ahead · Powered by Stalliq</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
@@ -1449,25 +1449,25 @@ html { scroll-behavior: smooth; }
   <section id="d-story" class="d-texture">
     <div class="d-story-inner">
       <div class="d-story-img reveal">
-        <img src="https://i.ibb.co/ccpwqTzX/cartoon.jpg" alt="Daniele and Danielle, founders of La Muletti Pizza">
-        <div class="d-story-img-caption">Daniele &amp; Danielle — La Muletti Pizza</div>
+        <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Our founders">
+        <div class="d-story-img-caption"></div>
       </div>
       <div class="d-story-text reveal">
         <div class="d-eyebrow">Our story</div>
-        <h2 class="d-title">Born in <em>Sicily,<br>Made in MK</em></h2>
-        <p class="d-body">La Muletti Pizza was born from a simple idea: bring the soul of a Neapolitan pizzeria to the communities of Milton Keynes and beyond.</p>
+        <h2 class="d-title">Our <em>story</em></h2>
+        <p class="d-body"></p>
         <div class="d-founders-mini">
           <div class="d-founder-pill">
             <div class="d-founder-pill-avatar">D</div>
             <div>
-              <div class="d-founder-pill-name">Daniele</div>
-              <div class="d-founder-pill-role">Head Pizzaiolo &amp; Co-founder</div>
+              <div class="d-founder-pill-name"></div>
+              <div class="d-founder-pill-role"></div>
             </div>
           </div>
           <div class="d-founder-pill">
             <div class="d-founder-pill-avatar">D</div>
             <div>
-              <div class="d-founder-pill-name">Danielle</div>
+              <div class="d-founder-pill-name"></div>
               <div class="d-founder-pill-role">Operations &amp; Co-founder</div>
             </div>
           </div>
@@ -1486,14 +1486,14 @@ html { scroll-behavior: smooth; }
       <div class="d-hiw-steps reveal">
         <div class="d-hiw-step">
           <div class="d-hiw-num">01</div>
-          <div class="d-hiw-step-title">Choose your pizza</div>
+          <div class="d-hiw-step-title">Choose your food</div>
           <div class="d-hiw-step-desc">Browse the menu and add to your basket. Works on any phone — no app download needed.</div>
         </div>
         <div class="d-hiw-connector"></div>
         <div class="d-hiw-step">
           <div class="d-hiw-num">02</div>
-          <div class="d-hiw-step-title">We fire it fresh</div>
-          <div class="d-hiw-step-desc">Your order reaches Daniele instantly. 90 seconds in the wood-fired oven — the way it's done in Naples.</div>
+          <div class="d-hiw-step-title">We cook it fresh</div>
+          <div class="d-hiw-step-desc">Your order goes straight to the kitchen and is cooked fresh to order.</div>
         </div>
         <div class="d-hiw-connector"></div>
         <div class="d-hiw-step">
@@ -1532,9 +1532,9 @@ html { scroll-behavior: smooth; }
 
   <!-- FOOTER -->
   <footer class="d-footer">
-    <div class="d-footer-logo">La <span>Muletti</span> Pizza</div>
+    <div class="d-footer-logo"></div>
     <div id="d-footer-fsa"></div>
-    <div class="d-footer-copy">© 2025 La Muletti Pizza · Milton Keynes · hello@lamulettipizza.co.uk · <a href="privacy.html" style="color:var(--gold);text-decoration:underline;text-underline-offset:2px;">Privacy policy</a></div>
+    <div class="d-footer-copy"><span id="d-footer-copy-text"></span> · <a href="privacy.html" style="color:var(--gold);text-decoration:underline;text-underline-offset:2px;">Privacy policy</a></div>
   </footer>
 
 </div><!-- /desktop-site -->
@@ -1590,7 +1590,7 @@ html { scroll-behavior: smooth; }
       <div class="d-acct-section-label">Loyalty Card</div>
       <div class="m-stamp-card">
         <div class="m-stamp-card-header">
-          <div class="m-stamp-card-title" id="d-stamp-title">La Muletti Loyalty</div>
+          <div class="m-stamp-card-title" id="d-stamp-title">Loyalty</div>
         </div>
         <div class="m-stamp-sub" id="d-stamp-sub">Earn stamps with every order</div>
         <div class="m-stamps-grid" id="d-stamps-grid"></div>
@@ -1603,7 +1603,7 @@ html { scroll-behavior: smooth; }
       <div class="d-acct-section-label">Order History</div>
       <div id="d-order-history-list"></div>
       <div id="d-order-history-empty" class="m-acct-empty-history" style="display:none;">
-        No orders yet — your first pizza is waiting
+        No orders yet — your first order is waiting
       </div>
       <button class="d-signout-acct-btn" onclick="accountSignOut('d')">Sign Out</button>
     </div>
@@ -1619,7 +1619,7 @@ html { scroll-behavior: smooth; }
     <div class="d-order-timelabel" id="d-order-timelabel">Waiting for kitchen to accept…</div>
     <div class="d-order-ref" id="d-order-ref">Order ref #001</div>
     <div class="d-order-details" id="d-order-details"></div>
-    <p class="d-order-msg">Thanks for your order! Please collect and <strong>pay on pickup</strong>. Your fresh pizza will be ready soon.</p>
+    <p class="d-order-msg" id="d-order-msg">Thanks for your order!</p>
     <button class="d-btn-primary" style="justify-content:center;" onclick="dDismissOrder()">Done — See you soon!</button>
   </div>
 </div>
@@ -1645,7 +1645,7 @@ html { scroll-behavior: smooth; }
     <div id="m-flash-sale-banner" class="m-flash-sale-banner"></div>
     <div class="m-eyebrow">Fresh to order</div>
     <div class="m-section-header">Our Menu</div>
-    <div id="m-menu-sub" class="m-section-sub">All pizzas fresh to order · Pay on collection</div>
+    <div id="m-menu-sub" class="m-section-sub">Fresh to order</div>
     <div class="diet-legend">
       <span class="diet-badge diet-badge-ve">VE = Vegan</span>
       <span class="diet-badge diet-badge-v">V = Vegetarian</span>
@@ -1683,7 +1683,7 @@ html { scroll-behavior: smooth; }
     <div class="m-about-bar"><p></p></div>
     <div class="m-founders-section">
       <div class="m-founders-label">Meet the Founders</div>
-      <div class="m-cartoon"><img src="https://i.ibb.co/ccpwqTzX/cartoon.jpg" alt="Daniele and Danielle"></div>
+      <div class="m-cartoon"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Our founders"></div>
       <div class="m-founder-cards"></div>
     </div>
     <div class="m-story-section">
@@ -1727,7 +1727,7 @@ html { scroll-behavior: smooth; }
       <div class="m-acct-section-label">Loyalty Card</div>
       <div class="m-stamp-card">
         <div class="m-stamp-card-header">
-          <div class="m-stamp-card-title" id="m-stamp-title">La Muletti Loyalty</div>
+          <div class="m-stamp-card-title" id="m-stamp-title">Loyalty</div>
         </div>
         <div class="m-stamp-sub" id="m-stamp-sub">Earn stamps with every order</div>
         <div class="m-stamps-grid" id="m-stamps-grid"></div>
@@ -1740,7 +1740,7 @@ html { scroll-behavior: smooth; }
       <div class="m-acct-section-label">Order History</div>
       <div id="m-order-history-list"></div>
       <div id="m-order-history-empty" class="m-acct-empty-history" style="display:none;">
-        No orders yet — your first pizza is waiting
+        No orders yet — your first order is waiting
       </div>
       <button class="m-signout-btn" onclick="accountSignOut()">Sign Out</button>
       <a href="privacy.html" style="display:block;margin:8px 0 24px;font-size:12px;color:rgba(253,246,236,0.35);text-align:center;text-decoration:underline;text-underline-offset:3px;">Privacy policy</a>

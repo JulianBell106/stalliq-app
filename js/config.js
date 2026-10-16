@@ -239,6 +239,32 @@ const CONFIG = {
 
 
   /* --------------------------------------------------------------------------
+     VENDOR STRINGS  (B4 generic audit, 2026-10-16)
+     Customer- and kitchen-facing wording that depends on HOW the vendor
+     trades. Every key is OPTIONAL — omit it and the app uses the Stall-mode
+     default shown here (van / collection wording). Kitchen-mode vendors
+     (delivery, e.g. Som Ka — see B18) override these, e.g.
+       readyStatus:  'On its way — your order is out for delivery!',
+       readyMessage: 'Your {type} is on its way! {icon}',
+       readyButton:  '✓ Thanks!',
+       locationNoun: 'kitchen',
+     Tokens: {type} → business.type · {icon} → business.stampIcon
+             {noun} → strings.locationNoun (kitchen dashboard only)
+  -------------------------------------------------------------------------- */
+  strings: {
+    readyTitle:             'Ready to collect!',
+    readyStatus:            'Ready to collect — head to the van!',
+    readyMessage:           'Head to the van — your {type} is ready! {icon}',
+    readyButton:            '✓ Thanks — on my way!',
+    authSubtitle:           "Enter your mobile and we'll text you when your order is ready to collect",
+    collectionQuestion:     'When are you collecting?',
+    liveLocationTagline:    'We are operating in this location right now — come and find us!',
+    locationNoun:           'van',
+    locationReadError:      'Could not read {noun} location — try again.',
+    flashSaleBroadcastNote: 'Van must be broadcasting.',
+  },
+
+  /* --------------------------------------------------------------------------
      FSA FOOD HYGIENE RATING
      Set rating to 0-5 to show the badge in the footer.
      Set to null to hide entirely (e.g. for vendors awaiting inspection).

@@ -28,7 +28,7 @@
 //   GOOGLE_GEOCODING_API_KEY=your_google_geocoding_api_key
 //
 // Required Firestore field (set once per vendor in Firebase Console):
-//   vendors/lamuletti  ->  displayName: "La Muletti"
+//   vendors/{vendorId} ->  displayName: "Vendor Name"   (e.g. vendors/demo -> "Street Stack")
 // ============================================================================
 // - Latest version.
 
